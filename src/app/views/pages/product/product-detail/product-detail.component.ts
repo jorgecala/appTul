@@ -54,7 +54,7 @@ export class ProductDetailComponent implements OnInit, OnDestroy {
       product: product,
       userId: this.userDetails.$key,
     }
-    this.productService.addFavouriteProduct(data);
+    this.productService.addToCart(data);
     //this.productService.addToCartToLocal(product); //add to localstorage
   }
 

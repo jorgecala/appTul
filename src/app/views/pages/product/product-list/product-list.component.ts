@@ -74,7 +74,7 @@ export class ProductListComponent implements OnInit {
       product: product,
       userId: this.userDetails.$key,
     }
-    this.productService.addFavouriteProduct(data);
+    this.productService.addToCart(data);
     //this.productService.addToCartToLocal(product); //add to localstorage
   }
 }
