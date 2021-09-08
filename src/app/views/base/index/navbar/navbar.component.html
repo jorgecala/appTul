@@ -1,0 +1,59 @@
+<!--Navbar-->
+<nav class="navbar navbar-expand-lg navbar-dark">
+    <!-- Navbar brand -->
+    <a class="navbar-brand" href="javascript:;;">TulApp</a>
+    <!-- Collapse button -->
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#basicExampleNav" aria-controls="basicExampleNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="basicExampleNav">
+        <!-- Links -->
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+                <a class="nav-link" href="javascript:;;" [routerLink]="['/']">Inicio
+                  <span class="sr-only">(current)</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="jaascript:;;" [routerLink]="['/products/all-products']">Productos</a>
+            </li>
+        </ul>
+        <!-- Links -->
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item" *ngIf="authService.isLoggedIn$ | async">
+                <div>
+                    <a class="nav-link" href="javascript:;;" [routerLink]="['/products/favourite-products']">
+                        <i class="fa fa-heart">
+                          <span class="mt-2">
+                            {{ favoruiteProducts.length }}
+                          </span>
+                        </i>
+                    </a>
+                </div>
+            </li>
+            <li class="nav-item" *ngIf="authService.isLoggedIn$ | async">
+                <div>
+                    <a class="nav-link" href="javascript:;;" [routerLink]="['/products/cart-items']">
+                        <i class="fa fa-shopping-cart">
+                          <span class="mt-2">
+                            {{ cartProducts.length }}
+                          </span>
+                        </i>
+                    </a>
+                </div>
+            </li>
+            <li class="nav-item" *ngIf="authService.isLoggedOut$ | async">
+                <a class="nav-link" [routerLink]="['/login']">
+                    <i class="fa fa-sign-in mr-1"></i> Iniciar sesión</a>
+            </li>
+            <li class="nav-item" *ngIf="authService.isLoggedIn$ | async">
+                <a class="nav-link" (click)="logout()">
+                    <i class="fa fa-sign-in mr-1"></i>Cerrar sesión
+                </a>
+            </li>
+        </ul>
+    </div>
+    <!-- Collapsible content -->
+</nav>
+<!--/.Navbar-->

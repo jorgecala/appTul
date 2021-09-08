@@ -1,0 +1,83 @@
+<div class="container mt-3">
+    <div class="col-md order-md-1">
+        <h4 class="mb-3">Dirección de entrega</h4>
+        <form class="needs-validation" #userDetailsForm="ngForm" (ngSubmit)="updateUserDetails(userDetailsForm)">
+            <div class="row">
+                <div class="col-md-6 mb-2">
+                    <label for="firstName">Primer nombre</label>
+                    <input type="text" class="form-control px-3" placeholder="Primer nombre" id="firstName" [(ngModel)]="userDetail.firstName" name="firstName" #firstName="ngModel" required [ngClass]="{ 'is-invalid': firstName.invalid, 'is-valid': firstName.valid }" />
+                    <ng-container [ngTemplateOutlet]="formError" [ngTemplateOutletContext]="{
+                        validation: 'required',
+                        message: 'Este campo es requerido',
+                        control: firstName}">
+                    </ng-container>
+                </div>
+                <div class="col-md-6 mb-2">
+                    <label for="lastName">Primer apellido</label>
+                    <input type="text" class="form-control px-3" placeholder="Primer apellido" id="lastName" [(ngModel)]="userDetail.lastName" name="lastName" #lastName="ngModel" required [ngClass]="{ 'is-invalid': lastName.invalid, 'is-valid': lastName.valid }" />
+                    <ng-container [ngTemplateOutlet]="formError" [ngTemplateOutletContext]="{
+                        validation: 'required',
+                        message: 'Este campo es requerido',
+                        control: lastName}">
+                    </ng-container>
+                </div>
+                <div class="col-md-6 mb-2">
+                    <label for="email">Correo electrónico</label>
+                    <input type="email" class="form-control px-3" placeholder="Correo electrónico" id="email" [(ngModel)]="userDetails.emailId" name="email" #email="ngModel" required [ngClass]="{ 'is-invalid': email.invalid, 'is-valid': email.valid }" />
+                    <ng-container [ngTemplateOutlet]="formError" [ngTemplateOutletContext]="{
+                        validation: 'required',
+                        message: 'Este campo es requerido',
+                        control: email}">
+                    </ng-container>
+                </div>
+                <div class="col-md-6 mb-2">
+                    <label for="address">Dirección</label>
+                    <input type="text" class="form-control px-3" id="address" placeholder="Cra 51 # 43-54" [(ngModel)]="userDetail.address1" name="address1" #address1="ngModel" required [ngClass]="{ 'is-invalid': address1.invalid, 'is-valid': address1.valid }" />
+                    <ng-container [ngTemplateOutlet]="formError" [ngTemplateOutletContext]="{
+                    validation: 'required',
+                    message: 'Este campo es requerido',
+                    control: address1}">
+                    </ng-container>
+                </div>
+                <div class="col-md-6 mb-2">
+                    <label for="country">País</label>
+                    <select class="custom-select d-block w-100 px-3" id="country" required [(ngModel)]="userDetail.country" name="country" #country="ngModel" [ngClass]="{ 'is-invalid': country.invalid, 'is-valid': country.valid }">
+                        <option value="">Elige...</option>
+                        <option>Colombia</option>
+                    </select>
+                    <ng-container [ngTemplateOutlet]="formError" [ngTemplateOutletContext]="{
+                        validation: 'required',
+                        message: 'Este campo es requerido',
+                        control: country}">
+                    </ng-container>
+                </div>
+                <div class="col-md-6 mb-2">
+                    <label for="state">Ciudad</label>
+                    <select class="custom-select d-block w-100 px-3" id="state" [(ngModel)]="userDetail.state" name="state" #state="ngModel" required [ngClass]="{ 'is-invalid': state.invalid, 'is-valid': state.valid }">
+                        <option value="">Elige...</option>
+                        <option>Bogotá D.C.</option>
+                    </select>
+                    <ng-container [ngTemplateOutlet]="formError" [ngTemplateOutletContext]="{
+                        validation: 'required',
+                        message: 'Este campo es requerido',
+                        control: state}">
+                    </ng-container>
+                </div>
+            </div>
+            <hr class="mb-4" />
+            <button class="btn btn-primary float-right" type="submit">
+        Continuar
+      </button>
+        </form>
+    </div>
+</div>
+
+<ng-template #formError let-control="control" let-message="message" let-validation="validation">
+    <ng-container *ngIf="control.hasError(validation) && (control.dirty || control.touched)">
+        <div class="fv-plugins-message-container">
+            <div class="fv-help-block">
+                {{ message }}
+            </div>
+        </div>
+    </ng-container>
+</ng-template>

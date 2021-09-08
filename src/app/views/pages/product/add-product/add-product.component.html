@@ -1,0 +1,72 @@
+<!-- Modal -->
+<div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">Add Product</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+            </div>
+            <div class="modal-body">
+                <form class="needs-validation" #addProductForm="ngForm" (ngSubmit)="createProduct(addProductForm)">
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label for="productName">Nombre del producto</label>
+                            <input type="text" class="form-control" id="productName" name="productName" [(ngModel)]="product.productName" placeholder="Product Name" value="" required />
+                            <div class="invalid-feedback">
+                                Este campo es requerido.
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label for="productCategory">Categoría del producto</label>
+                            <input type="text" class="form-control" id="productCategory" name="productCategory" [(ngModel)]="product.productCategory" placeholder="Product Category" value="" required />
+                            <div class="invalid-feedback">
+                                Este campo es requerido.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="productDescription">Descripción del producto
+              <span class="text-muted">(Opcional)</span>
+            </label>
+                        <textarea type="text" class="form-control" id="productDescription" placeholder="Product Description" name="productDescription" [(ngModel)]="product.productDescription"></textarea>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label for="productPrice">Precio del producto</label>
+                            <input type="number" name="productPrice" class="form-control" [(ngModel)]="product.productPrice" placeholder="Product Price" id="productPrice" value="" required />
+                            <div class="invalid-feedback">
+                                Este campo es requerido.
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label for="productQuatity">Cantidad de productos</label>
+                            <input type="text" class="form-control" id="productQuatity" name="productQuatity" [(ngModel)]="product.productQuatity" placeholder="Product Quantity" value="" required />
+                            <div class="invalid-feedback">
+                                Este campo es requerido.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="productSeller">Fabricante</label>
+                        <input type="text" class="form-control" id="productSeller" [(ngModel)]="product.productSeller" name="productSeller" placeholder="Product Seller" required />
+                    </div>
+                    <div class="mb-3">
+                        <label for="productImageUrl">Imágen del producto</label>
+                        <input type="text" class="form-control" id="productImageUrl" [(ngModel)]="product.productImageUrl" name="productImageUrl" placeholder="Image Url" required />
+                    </div>
+
+                    <hr class="mb-4" />
+
+                    <button class="btn btn-primary btn-lg btn-block" type="submit">
+            Agregar producto
+          </button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
